@@ -1,9 +1,8 @@
 const  express  = require("express");
+const mysql = require('mysql2');
 const usersRoutes = require('./routes/users')
 const middlewareLogRequest = require('./middleware/logs')
-
 const app =  express(); 
-
 
 app.use(middlewareLogRequest);
 app.use(express.json())
