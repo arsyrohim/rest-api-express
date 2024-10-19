@@ -6,5 +6,11 @@ const getAllusers = () => {
     return dbpool.execute(SQLQuery)
 }
 
+const CreateNewUser =(body) => {
+    const SQLQuery = `INSERT INTO users (nama , email, adress) 
+                      VALUES ('${body.nama}', '${body.email}' , '${body.adess}')`
+   return dbpool.execute(SQLQuery)                      
+}
 
-module.exports = {getAllusers}
+
+module.exports = {getAllusers , CreateNewUser}

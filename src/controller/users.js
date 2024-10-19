@@ -16,12 +16,22 @@ const getAllUsers = async (req , res) => {
     
 }; 
 
-const CreateNewUser = (req , res) => {
+const CreateNewUser = async (req , res) => {
     console.log(req.body)
-     res.json({
-        message : "POST New User success" , 
-        data : req.body
-    });
+    const {body} = req
+        try {
+            await UsersModel.CreateNewUser(body)
+            res.json({
+                message : "POST New User success" , 
+                data : body
+            });
+        } catch (error) {
+            res.status(500).json({
+                message : "error server" , 
+                detail : error
+             });
+        }
+    
 }; 
 
 const UpdateUser = (req , res) => {
